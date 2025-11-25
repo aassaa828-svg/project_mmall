@@ -1,0 +1,97 @@
+/* common */
+body * {font-family: 'pretendard';}
+img {width:100%;}
+button {background:none;}
+/* header */
+#header {background:#000; position: relative;}
+#header * {color:#fff;}
+#header {display:flex; flex-flow:column; padding:20px 240px; gap:15px;}
+#header .header-inner {display:flex; justify-content: space-between; align-items: center;}
+/* header-top */
+#header .header-top .header-inner .logo {width:162px; filter: invert();}
+#header .header-top .header-inner .header-top-right {display:flex; gap:40px;}
+/* header-top-search */
+#header .header-top .header-inner .header-top-right .search-box {            
+    position: relative;
+    width: 360px;
+    background: #fff;
+    border-radius: 50px; /* 둥근 모양 */
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding:10px 20px;
+}
+#header .header-top .header-inner .header-top-right .search-box #search-input {            
+    width: 100%;
+    height: 100%;
+    font-size: 14px;
+    color:black;
+    outline: none;
+}
+#header .header-top .header-inner .header-top-right .search-box .search-btn {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#header .header-top .header-inner .header-top-right .search-box .search-btn .icon-search {
+    display: block;
+    width: 24px;
+    height: 24px;
+    background-image: url('../images/icon/search.png');
+    background-repeat: no-repeat;
+}
+/* header-top-icon */
+#header .header-top .header-inner #user-icons ul {display:flex; gap:10px;}
+#header .header-top .header-inner #user-icons ul li span {display:block; width:32px; height:32px;}
+#header .header-top .header-inner #user-icons ul li .icon-bell {background-image: url(../images/icon/notifications.png);}
+#header .header-top .header-inner #user-icons ul li .icon-bag {background-image: url(../images/icon/local_mall.png);}
+#header .header-top .header-inner #user-icons ul li .icon-user {background-image: url(../images/icon/person.png);}
+/* header-bottom */
+#header .header-bottom {}
+#header .header-bottom .header-inner {}
+/* header-bottom-left */
+#header .header-bottom .header-inner .header-bottom-left {}
+#header .header-bottom .header-inner .header-bottom-left #menu-toggle {}
+#header .header-bottom .header-inner .header-bottom-left #menu-toggle .icon-menu {
+    display:block; width:32px; height:32px; background-image: url(../images/icon/dehaze.png);
+}
+/* header-bottom-gnb */
+#header .header-bottom .header-inner #gnb-main {}
+#header .header-bottom .header-inner #gnb-main ul {display:flex; gap:15px;}
+#header .header-bottom .header-inner #gnb-main ul li {padding:5px 10px; border-radius: 20px;}
+#header .header-bottom .header-inner #gnb-main ul li.is-active {background:#fff;}
+#header .header-bottom .header-inner #gnb-main ul li.is-active > a{color:#000;}
+#header .header-bottom .header-inner #gnb-main ul li a {font-size: 16px; font-weight: 500;}
+/* header-bottom-right */
+#header .header-bottom .header-inner .header-bottom-right {
+    border:1.5px #fff solid; padding:10px 20px; border-radius: 20px; 
+}
+#header .header-bottom .header-inner .header-bottom-right .appdown-btn {
+    font-size:14px; font-weight: 700;
+}
+/* header-lnb */
+.lnb-layer {display:none;}
+.lnb-layer.is-open {display:block;}
+#header #full-category-lnb {
+    position: absolute;
+    top: 130px; /* Header Top(80) + Bottom(50) */
+    left: 240px;
+    width: 400px;
+    background-color: #fff;
+    border-top: 1px solid #ddd;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    padding:20px 40px 40px 20px;
+}
+#header #full-category-lnb .depth1 {position: relative;}
+#header #full-category-lnb li {margin-bottom:15px;}
+#header #full-category-lnb li a {font-size:14px; font-weight: 500; color:#a3a3a3;}
+#header #full-category-lnb .has-sub > a {color:#000;}
+#header #full-category-lnb .is-active > a {color:#000;}
+#header #full-category-lnb .depth1 li .depth2 {position: absolute; top:0; left:120px; width:100px;}
+#header #full-category-lnb .depth1 li .depth2 li .depth3 {position: absolute; top:0; left:120px; width:100px;}
+#header #full-category-lnb a:hover {color:#000;}
