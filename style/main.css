@@ -1,16 +1,24 @@
-/* common */
+/* ===================================================common===================================================================== */
+html,
+body {
+    position: relative;
+    height: 100%;
+}
 body * {font-family: 'pretendard';}
 img {width:100%;}
 button {background:none;}
-/* header */
+.title h3 {font-size:32px; font-weight: 600; margin-bottom:5px;}
+.title p {}
+.viewmore {display:block; font-size:14px; border-bottom:1px solid #000;}
+/* =========================================================header=============================================================== */
 #header {background:#000; position: relative;}
 #header * {color:#fff;}
 #header {display:flex; flex-flow:column; padding:20px 240px; gap:15px;}
 #header .header-inner {display:flex; justify-content: space-between; align-items: center;}
-/* header-top */
+/* ------------------------------header-top---------------------------------- */
 #header .header-top .header-inner .logo {width:162px; filter: invert();}
 #header .header-top .header-inner .header-top-right {display:flex; gap:40px;}
-/* header-top-search */
+/* ---------------------------header-top-search------------------------------------ */
 #header .header-top .header-inner .header-top-right .search-box {            
     position: relative;
     width: 360px;
@@ -45,53 +53,349 @@ button {background:none;}
     background-image: url('../images/icon/search.png');
     background-repeat: no-repeat;
 }
-/* header-top-icon */
+/* --------------------------------------header-top-icon---------------------------- */
 #header .header-top .header-inner #user-icons ul {display:flex; gap:10px;}
 #header .header-top .header-inner #user-icons ul li span {display:block; width:32px; height:32px;}
 #header .header-top .header-inner #user-icons ul li .icon-bell {background-image: url(../images/icon/notifications.png);}
 #header .header-top .header-inner #user-icons ul li .icon-bag {background-image: url(../images/icon/local_mall.png);}
 #header .header-top .header-inner #user-icons ul li .icon-user {background-image: url(../images/icon/person.png);}
-/* header-bottom */
+/* -----------------------------------header-bottom---------------------------------- */
 #header .header-bottom {}
 #header .header-bottom .header-inner {}
-/* header-bottom-left */
+/* ----------------------------------header-bottom-left---------------------------------------- */
 #header .header-bottom .header-inner .header-bottom-left {}
 #header .header-bottom .header-inner .header-bottom-left #menu-toggle {}
 #header .header-bottom .header-inner .header-bottom-left #menu-toggle .icon-menu {
     display:block; width:32px; height:32px; background-image: url(../images/icon/dehaze.png);
 }
-/* header-bottom-gnb */
+/* --------------------------------header-bottom-gnb--------------------------------------------- */
 #header .header-bottom .header-inner #gnb-main {}
 #header .header-bottom .header-inner #gnb-main ul {display:flex; gap:15px;}
 #header .header-bottom .header-inner #gnb-main ul li {padding:5px 10px; border-radius: 20px;}
 #header .header-bottom .header-inner #gnb-main ul li.is-active {background:#fff;}
 #header .header-bottom .header-inner #gnb-main ul li.is-active > a{color:#000;}
 #header .header-bottom .header-inner #gnb-main ul li a {font-size: 16px; font-weight: 500;}
-/* header-bottom-right */
+/* -----------------------------header-bottom-right---------------------------------- */
 #header .header-bottom .header-inner .header-bottom-right {
     border:1.5px #fff solid; padding:10px 20px; border-radius: 20px; 
+}
+#header .header-bottom .header-inner .header-bottom-right:hover,
+#header .header-bottom .header-inner .header-bottom-right:hover .appdown-btn {
+    background:#fff; color: #000;
 }
 #header .header-bottom .header-inner .header-bottom-right .appdown-btn {
     font-size:14px; font-weight: 700;
 }
-/* header-lnb */
-.lnb-layer {display:none;}
-.lnb-layer.is-open {display:block;}
+
+/* --------------------------------------header-lnb-------------------------------------------- */
+.lnb-layer {
+    display: none;
+}
+.lnb-layer.is-open {
+    display: block;
+}
+
 #header #full-category-lnb {
     position: absolute;
     top: 130px; /* Header Top(80) + Bottom(50) */
-    left: 240px;
-    width: 400px;
+    left: 240px; /* main css의 header padding-left와 맞춤 */
+    width: 450px; /* 3단 메뉴가 다 보일 수 있도록 너비 넉넉하게 수정 */
     background-color: #fff;
-    border-top: 1px solid #ddd;
+    border: 1px solid #ddd; /* 테두리 전체 적용 */
     box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-    padding:20px 40px 40px 20px;
+    padding: 30px;
+    z-index: 100; /* 다른 요소보다 위에 뜨도록 */
+    border-radius: 0 0 20px 20px; /* 하단 둥글게 */
 }
-#header #full-category-lnb .depth1 {position: relative;}
-#header #full-category-lnb li {margin-bottom:15px;}
-#header #full-category-lnb li a {font-size:14px; font-weight: 500; color:#a3a3a3;}
-#header #full-category-lnb .has-sub > a {color:#000;}
-#header #full-category-lnb .is-active > a {color:#000;}
-#header #full-category-lnb .depth1 li .depth2 {position: absolute; top:0; left:120px; width:100px;}
-#header #full-category-lnb .depth1 li .depth2 li .depth3 {position: absolute; top:0; left:120px; width:100px;}
-#header #full-category-lnb a:hover {color:#000;}
+
+/* LNB 기본 텍스트 스타일 (회색) */
+#header #full-category-lnb li a {
+    font-size: 14px;
+    font-weight: 500;
+    color: #a3a3a3; /* 기본 회색 */
+    display: flex; /* 화살표 정렬을 위해 flex 사용 */
+    align-items: center;
+    line-height: 1.5;
+    cursor: pointer; /* 클릭 가능하다는 표시 */
+}
+
+#header #full-category-lnb li {
+    margin-bottom: 12px;
+}
+
+/* [수정됨] li에 .is-active가 붙었을 때만 텍스트 검은색 & 굵게 */
+#header #full-category-lnb li.is-active > a,
+#header #full-category-lnb li a:hover {
+    color: #000;
+    font-weight: 700;
+}
+
+/* [수정됨] li에 .is-active가 붙었을 때만 화살표 생성 */
+/* has-sub 클래스는 '하위 메뉴가 있다'는 표시용으로만 사용 */
+#header #full-category-lnb .has-sub.is-active > a::after,
+#header #full-category-lnb .depth2 > li.is-active > a::after {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-top: 1.5px solid #000;    /* 선 두께 */
+    border-right: 1.5px solid #000;  /* 선 두께 */
+    transform: rotate(45deg);        /* 45도 회전시켜 화살표 모양 만들기 */
+    margin-left: 8px;                /* 텍스트와 화살표 사이 간격 */
+    margin-top: -2px;                /* 시각적 높이 보정 */
+}
+
+/* Depth 위치 잡기 */
+#header #full-category-lnb .depth1 {
+    position: relative;
+    width: 130px; /* 1차 메뉴 너비 고정 */
+}
+
+/* 2차 메뉴 위치 */
+#header #full-category-lnb .depth1 > li > .depth2 {
+    display: none; /* 기본 숨김 */
+    position: absolute;
+    top: 0;
+    left: 130px; /* depth1 너비만큼 이동 */
+    width: 130px;
+    padding-left: 20px; /* 간격 띄우기 */
+    border-left: 1px solid #eee; /* 구분선 */
+}
+
+/* 3차 메뉴 위치 */
+#header #full-category-lnb .depth2 > li > .depth3 {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 130px; /* depth2 너비만큼 이동 */
+    width: 130px;
+    padding-left: 20px;
+    border-left: 1px solid #eee;
+}
+
+/* [수정됨] 오직 .is-active 상태일 때만 하위 메뉴 보이기 */
+#header #full-category-lnb .depth1 > li.is-active > .depth2 {
+    display: block;
+}
+#header #full-category-lnb .depth2 > li.is-active > .depth3 {
+    display: block;
+}
+
+
+/* ==============================================================main-banner=========================================================================== */
+
+.main-banner {
+    margin-top:40px; position: relative;
+    padding-bottom:40px;
+}
+
+.main-banner .page-box {position:relative; width:80px; top:35px; left:80.5%;}
+
+.main-banner .swiper-button-prev,
+.main-banner .swiper-button-next {
+    position: absolute;
+    top:0; /* 페이지네이션과 같은 라인에 오도록 조정 */
+    transform: scale(0.3);
+    color:#000;
+    z-index: 10;
+}
+
+.main-banner .swiper-button-prev { 
+    left:0;
+}
+
+.main-banner .swiper-button-next {
+    right:0;
+}
+
+/* 페이지네이션 (1 / 4) 스타일 */
+.main-banner .swiper-pagination-fraction {
+    position: absolute;
+    top:0;
+    transform: translateY(-9px) translateX(-50%);
+    left:50%;
+}
+.main-banner .swiper-pagination-total {color:#A3A3A3;}
+
+/* Swiper 스크롤바 스타일 */
+.main-banner .swiper-scrollbar {
+    position: absolute;
+    left:50%; transform: translateX(-50%);
+    width:60%;
+    height: 2px;
+}
+/* ---------------------------------------------------메인배너 이미지----------------------------------------------------- */
+.banner-swiper .swiper-slide .banner1 {background:url(../images/main_banner/main_banner1.png);}
+.banner-swiper .swiper-slide .banner2 {background:url(../images/main_banner/main_banner2.png);}
+.banner-swiper .swiper-slide .banner3 {background:url(../images/main_banner/main_banner3.png);}
+.banner-swiper .swiper-slide .banner4 {background:url(../images/main_banner/main_banner4.png);}
+.banner-swiper .swiper-slide .banner5 {background:url(../images/main_banner/main_banner5.png);}
+.banner-swiper .swiper-slide .banner6 {background:url(../images/main_banner/main_banner6.png);}
+.banner-swiper .swiper-slide .banner7 {background:url(../images/main_banner/main_banner7.png);}
+.banner-swiper .swiper-slide .banner8 {background:url(../images/main_banner/main_banner8.png);}
+.banner-swiper .swiper-slide .banner9 {background:url(../images/main_banner/main_banner9.png);}
+.banner-swiper .swiper-slide .banner10 {background:url(../images/main_banner/main_banner10.png);}
+.banner-swiper .swiper-slide .banner-box {width:693px; height:450px; background-size:cover; background-repeat: no-repeat; position: relative;}
+.banner-swiper .swiper-slide .banner-box .banner-text {position:absolute; left:40px; bottom:40px;}
+.banner-swiper .swiper-slide .banner-box h2 {color:#fff; font-size:32px; font-weight: 700; text-shadow:0px 4px 4px rgba(0,0,0,0.1); margin-bottom:10px;}
+.banner-swiper .swiper-slide .banner-box p {color:#fff; font-weight:600; text-shadow:0px 4px 4px rgba(0,0,0,0.1);}
+/* ----------------------------메인배너 애니메이션+after 처리--------------------------- */
+.banner-swiper .swiper-slide {
+    position: relative;
+    overflow: hidden;
+    transition: 0.3s;
+    display:flex; justify-content: space-between;
+}
+.banner-swiper .swiper-slide::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.35);
+    transition: 0.3s;
+}
+.banner-swiper .swiper-slide-active::after {
+    background: rgba(0,0,0,0);
+}
+/* =================================================brand section================================================================ */
+.brand-slide {max-width:1440px; margin:0 auto; margin-top:80px; position: relative;}
+.brand-swiper {width:1180px;}
+.brand-slide .swiper-slide {}
+.brand-slide .swiper-slide a {
+    display:flex; flex-flow: column; gap:5px; justify-content:center; align-items: center;
+}
+.brand-slide .swiper-slide img {border-radius: 50%; border:1px solid #CCC;}
+.brand-slide .swiper-slide span {font-size:14px;}
+.brand-slide .swiper-button-prev::after,
+.brand-slide .swiper-button-next::after {display:none;}
+.brand-slide .swiper-button-prev {background:url(../images/icon/arrow_left_alt.png); left:0;}
+.brand-slide .swiper-button-next {background:url(../images/icon/arrow_right_alt.png); right:0;}
+.brand-slide .swiper-button-prev,
+.brand-slide .swiper-button-next {background-size:cover; width:32px; height:32px;}
+/* =================================================best50 section================================================================ */
+.best50 {
+    max-width: 1440px; margin:0 auto; margin-top:80px;
+    position: relative;
+}
+.best50 .title-box {
+    display:flex; flex-flow:row; justify-content: space-between; 
+    align-items: flex-end; margin-bottom: 40px;
+}
+
+/* ------------------------- 단일 상품 카드 스타일 ------------------------------------- */
+
+.layout1-swiper {padding-bottom:40px;}
+
+/* 상품 카드 컨테이너 */
+.product-card {
+    position: relative;
+    width: 350px;
+    padding-bottom: 20px;
+    background-color: #fff;
+    overflow: hidden; 
+}
+
+/* 1. 랭킹 뱃지 */
+.product-rank {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50px;
+    height: 50px;
+    line-height: 45px;
+    background: url(../images/icon/rank.png);
+    color:#fff;
+    text-align: center;
+    font-weight: 600;
+    z-index: 5;
+    transform: translateY(-5px);
+}
+
+/* 2. 상품 이미지 영역 */
+.product-image-area {
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 100%; 
+    height: 0;
+}
+
+.product-thumb {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 3. 관심 상품 버튼 (하트 아이콘) */
+.wish-button {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    padding: 5px;
+    line-height: 1; 
+    z-index: 5;
+}
+
+/* 4. 상품 정보 텍스트 영역 */
+.product-info {padding-top:10px;}
+
+/* 5. 브랜드 바로가기 (브랜드명) */
+.brand-link {
+    display: block;
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+/* 6. 상품명 */
+.product-name {
+    color: #000;
+    line-height: 1.4;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* 2줄까지만 표시 */
+    -webkit-box-orient: vertical;
+    margin-bottom: 5px;
+}
+
+/* 7. 가격 정보 */
+.price-box {
+    display: flex;
+    align-items: flex-end; justify-content: space-between;
+}
+
+/* 할인율 */
+.discount-rate {
+    font-size: 16px;
+    font-weight: 600;
+    color: #EF2A23; 
+    margin-right: 5px;
+}
+
+/* 원가 (취소선) */
+.original-price {
+    font-size: 15px;
+    color: #A3A3A3;
+    text-decoration: line-through; 
+}
+
+/* 할인가 (총 금액) */
+.sale-price {
+    font-size: 18px;
+    font-weight: 600;
+    color: #000;
+}
+
+/* ------------레이아웃1 스크롤바------------ */
+.layout1 .swiper-scrollbar {
+    position: absolute;
+    bottom:0;
+    left:0;
+    width:100%;
+    height:2px;
+}
+
+/* =========================================키워드================================================================== */
+.keyword-section {max-width: 1440px; margin:180px auto 120px;}
+.keyword-section .keyword-box {display:flex; gap:15px; flex-wrap: wrap; justify-content: center;}
+.keyword-section .keyword-box a  {display:flex; align-items: center; gap:10px; background: #f9f9f9; padding:5px 20px 5px 5px; border-radius: 50px;}
+.keyword-section .keyword-box img {background:pink; width:30px; height:30px; border-radius: 50%;}
+.keyword-section .keyword-box span {font-size:14px;}
