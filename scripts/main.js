@@ -139,17 +139,93 @@ if (typeof Swiper !== 'undefined') {
         },
     });
 
-    var productSwiper = new Swiper(".layout1-swiper", {
+    var bestSwiper = new Swiper(".best-swiper", {
         slidesPerView: 4,
         spaceBetween:20,
         scrollbar: {
-            el : ".layout1 .swiper-scrollbar",
+            el : ".best50 .swiper-scrollbar",
             hide : false,
         },
     });
+
+    var saleSwiper = new Swiper(".sale-swiper", {
+        slidesPerView: 4,
+        spaceBetween:20,
+        scrollbar: {
+            el : ".sale .swiper-scrollbar",
+            hide : false,
+        },
+    });
+    
+    var redSwiper = new Swiper(".membership .red-swiper", {
+        slidesPerView: 6,
+        spaceBetween: 12,
+        observer: true,       // 스타일이 변경되면 감지해서 갱신
+        observeParents: true, // 부모 요소(mproduct)의 변화도 감지
+    });
+    var greenSwiper = new Swiper(".membership .green-swiper", {
+        slidesPerView: 6,
+        spaceBetween: 12,
+        observer: true,       // 스타일이 변경되면 감지해서 갱신
+        observeParents: true
+    });
+    var pinkSwiper = new Swiper(".membership .pink-swiper", {
+        slidesPerView: 6,
+        spaceBetween: 12,
+        observer: true,       // 스타일이 변경되면 감지해서 갱신
+        observeParents: true
+    });
+
+var adSwiper = new Swiper(".ad-swiper", {
+    slidesPerView: 3,
+    spaceBetween: 20,   
+    scrollbar: {
+        el : ".ad-section .swiper-scrollbar",
+        hide : false,
+        draggable: true, 
+    },
+});
+
+    var newSwiper = new Swiper(".new-swiper", {
+        slidesPerView: 6.5,
+        spaceBetween:20,
+        scrollbar: {
+            el : ".newitem .swiper-scrollbar",
+            hide : false,
+        },
+    });
+
+        var mdSwiper = new Swiper(".mdpick-swiper", {
+        slidesPerView: 4,
+        spaceBetween:20,
+        scrollbar: {
+            el : ".mdpick .swiper-scrollbar",
+            hide : false,
+        },
+    });
+
+        var weekSwiper = new Swiper(".week-swiper", {
+        slidesPerView: 6.5,
+        spaceBetween:20,
+        scrollbar: {
+            el : ".weekly-best .swiper-scrollbar",
+            hide : false,
+        },
+    });
+
+    var reviewSwiper = new Swiper(".review-swiper", {
+    slidesPerView: 5,   // 한 화면에 5개 보이기
+    spaceBetween: 20,   // 카드 사이 간격 20px
+    grabCursor: true,   // 마우스 커서 손모양
+    
+    // 스크롤바 설정
+    scrollbar: {
+        el: ".review-swiper .swiper-scrollbar",
+        draggable: true, // 드래그 가능하게
+        hide: false,     // 항상 보이게
+    },
+    })
 }
-
-
 /* ============================상품 카드 기능 (관심 상품 토글 및 가격 자동 계산)===================================== */
 
 /**
@@ -268,4 +344,29 @@ document.addEventListener('click', (e) => {
             // console.log('빈 링크 클릭 방지됨'); 
         }
     }
+});
+
+/* ========================멤버십상품 펼침 닫기================================== */
+// 모든 버튼과 모든 상품 섹션 선택
+const openBtns = document.querySelectorAll('.openbtn');
+const allProducts = document.querySelectorAll('.mproduct');
+
+openBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+        // 1. 클릭한 버튼의 부모(.mproduct) 찾기 (주인공)
+        const currentProduct = btn.closest('.mproduct');
+
+        // 2. 모든 섹션을 돌면서 검사
+        allProducts.forEach(function(product) {
+            // "주인공"이 아닌 다른 섹션들은 모두 닫기(active 제거)
+            if (product !== currentProduct) {
+                product.classList.remove('active');
+            }
+        });
+
+        // 3. 주인공 섹션은 토글 (닫혀있으면 열고, 열려있으면 닫음)
+        // 무조건 열기만 하고 싶다면 .add('active')를 쓰면 되지만,
+        // 보통 다시 누르면 닫히는 게 자연스러우므로 toggle 유지
+        currentProduct.classList.toggle('active');
+    });
 });

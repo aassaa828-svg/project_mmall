@@ -235,7 +235,7 @@ button {background:none;}
 .banner-swiper .swiper-slide .banner8 {background:url(../images/main_banner/main_banner8.png);}
 .banner-swiper .swiper-slide .banner9 {background:url(../images/main_banner/main_banner9.png);}
 .banner-swiper .swiper-slide .banner10 {background:url(../images/main_banner/main_banner10.png);}
-.banner-swiper .swiper-slide .banner-box {width:693px; height:450px; background-size:cover; background-repeat: no-repeat; position: relative;}
+.banner-swiper .swiper-slide .banner-box {width:49%; height:450px; background-size:cover; background-repeat: no-repeat; position: relative;}
 .banner-swiper .swiper-slide .banner-box .banner-text {position:absolute; left:40px; bottom:40px;}
 .banner-swiper .swiper-slide .banner-box h2 {color:#fff; font-size:32px; font-weight: 700; text-shadow:0px 4px 4px rgba(0,0,0,0.1); margin-bottom:10px;}
 .banner-swiper .swiper-slide .banner-box p {color:#fff; font-weight:600; text-shadow:0px 4px 4px rgba(0,0,0,0.1);}
@@ -283,10 +283,10 @@ button {background:none;}
 
 /* ------------------------- 단일 상품 카드 스타일 ------------------------------------- */
 
-.layout1-swiper {padding-bottom:40px;}
+.best-swiper {padding-bottom:40px;}
 
 /* 상품 카드 컨테이너 */
-.product-card {
+.best50 .product-card {
     position: relative;
     width: 350px;
     padding-bottom: 20px;
@@ -384,8 +384,8 @@ button {background:none;}
     color: #000;
 }
 
-/* ------------레이아웃1 스크롤바------------ */
-.layout1 .swiper-scrollbar {
+/* ------------베스트50 스크롤바------------ */
+.best50 .swiper-scrollbar {
     position: absolute;
     bottom:0;
     left:0;
@@ -396,6 +396,468 @@ button {background:none;}
 /* =========================================키워드================================================================== */
 .keyword-section {max-width: 1440px; margin:180px auto 120px;}
 .keyword-section .keyword-box {display:flex; gap:15px; flex-wrap: wrap; justify-content: center;}
-.keyword-section .keyword-box a  {display:flex; align-items: center; gap:10px; background: #f9f9f9; padding:5px 20px 5px 5px; border-radius: 50px;}
+.keyword-section .keyword-box a  {
+    display:flex; align-items: center; gap:10px; background: #f9f9f9; padding:5px 20px 5px 5px; border-radius: 50px;
+
+    transition: transform 0.3s ease, background-color 0.3s;
+
+}
+.keyword-section .keyword-box a:hover {
+    transform: scale(1.05);
+    background: #eee;
+}
 .keyword-section .keyword-box img {background:pink; width:30px; height:30px; border-radius: 50%;}
 .keyword-section .keyword-box span {font-size:14px;}
+
+/* =====================================membership================================================= */
+.membership {max-width: 1440px; margin:0 auto;}
+.membership .mproduct .title { width:100%; display:flex; justify-content: space-between; align-items: center; padding-bottom:22.5px;}
+.mproduct {margin-top:20px;}
+.mproduct .title {border-bottom: 1.5px solid #2A2626;}
+.red .title span { padding-left:20px; position: relative;}
+.red .title span strong {color:#EF2A23;}
+.red .title span::after {
+    content: ''; display:block; width:10px; height:10px; background:#EF2A23;  position: absolute; transform:translateY(-50%);  top:50%; left:0; border-radius: 50%;}
+.mproduct .swiper {height:230px; padding-top:30px;}
+.mproduct .linkbtn {
+    opacity: 0; width:24px; position: absolute; top:50%; z-index:100; right:0;
+    transition: opacity 0.3s ease;
+}
+.mproduct .swiper:hover .linkbtn {opacity: 1;}
+/* ----------------------------------------------------------------------------------------------------- */
+.green .title span { padding-left:20px; position: relative;}
+.green .title span strong {color:#1BBE6D;}
+.green .title span::after {
+    content: ''; display:block; width:10px; height:10px; background:#1BBE6D;  position: absolute; transform:translateY(-50%);  top:50%; left:0; border-radius: 50%;
+}
+/* ----------------------------------------------------------------------------------------------------- */
+.pink .title span { padding-left:20px; position: relative;}
+.pink .title span strong {color:#FF2495;}
+.pink .title span::after {
+    content: ''; display:block; width:10px; height:10px; background:#FF2495;  position: absolute; transform:translateY(-50%);  top:50%; left:0; border-radius: 50%;
+}
+/* ---------------------------------멤버십상품 애니메이션-------------------------- */
+/* =====================================
+   Membership Smooth Accordion CSS
+   ===================================== */
+
+/* 1. 타이틀 영역: 기본 상태 (닫힘) - 회색 줄 */
+.mproduct .title {
+    border-bottom: 1.5px solid #ccc; /* 닫혀있을 땐 회색 */
+    transition: border-bottom 0.3s;  /* 색상 부드럽게 변경 */
+}
+
+/* 2. 스와이퍼 영역: 기본 상태 (닫힘) - 높이 0 */
+.mproduct .swiper {
+    height: 0;           /* 높이를 0으로 숨김 */
+    padding-top: 0;      /* 패딩도 없애야 완벽하게 숨겨짐 */
+    opacity: 0;          /* 투명도 0 */
+    overflow: hidden;    /* 넘치는 내용 숨김 (필수) */
+    transition: all 0.5s ease-in-out; /* 0.5초 동안 부드럽게 전환 */
+}
+
+/* 3. 화살표 버튼: 기본 상태 (닫힘) - 아래쪽(180도)을 향함 */
+.openbtn img {
+    transform: rotate(180deg); /* 초기에는 아래를 보도록 회전 */
+    transition: transform 0.3s ease;
+}
+
+/* =====================================
+   활성화(Active) 상태 - 클래스가 붙었을 때
+   ===================================== */
+
+/* 1. 활성화 시 타이틀 줄 색상 진하게 */
+.mproduct.active .title {
+    border-bottom: 1.5px solid #2A2626;
+}
+
+/* 2. 활성화 시 스와이퍼 펼치기 */
+.mproduct.active .swiper {
+    /* 원래 높이 230px + padding 30px 고려해서 설정 */
+    height: 260px; 
+    padding-top: 30px;
+    opacity: 1;
+    cursor:grab;
+}
+
+/* 3. 활성화 시 화살표 원래대로 (위쪽) */
+.mproduct.active .openbtn img {
+    transform: rotate(0deg);
+}
+
+/* ===============================세일상품========================== */
+.sale {
+    max-width: 1440px; margin:0 auto; margin-top:80px;
+    position: relative;
+}
+.sale-date {padding-bottom:5px; width:100%; border-bottom: 1px solid #eee;}
+.sale-date span {font-size:12px; font-weight: 500;}
+.sale-date * {font-size:12px;}
+
+.sale .title-box {
+    display:flex; flex-flow:row; justify-content: space-between; 
+    align-items: flex-end; margin-bottom: 40px;
+}
+.sale-swiper {padding-bottom:40px;}
+.sale .swiper-scrollbar {
+    position: absolute;
+    bottom:0;
+    left:0;
+    height:2px;
+}
+.sale .brand-link {padding-top:5px;}
+
+.product-info .badge-box {display:flex; gap:5px; padding-top: 5px;}
+.product-info .badge-box .badge {font-size:12px; font-weight: 500; padding:2px 5px; color:#fff; }
+.product-info .badge-box .new {background-color:#EF2A23;}
+.product-info .badge-box .point {background-color:#000;}
+
+/* ====================ad상품======================================= */
+/* 전체 레이아웃 */
+.ad-section {
+    margin: 0 auto;
+    max-width: 1440px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* center 보다는 위쪽 정렬이 일반적입니다 */
+    margin-top: 160px;
+    gap: 60px; /* 배너와 상품 사이 간격 추가 */
+}
+
+/* 왼쪽 배너 (고정) */
+.ad-section .ad-banner {
+    background: url(../images/collection/ad_banner.png) no-repeat center/cover;
+    width: 400px;
+    height: 600px; /* 고정 높이 */
+    position: relative;
+    flex-shrink: 0; /* 화면이 줄어도 배너 크기는 줄지 않게 고정 */
+}
+
+.ad-section .ad-banner .adlink {
+    position: absolute;
+    bottom: 40px;
+    right: 40px;
+    cursor: pointer;
+}
+
+/* 오른쪽 상품 영역 (Swiper 포함) */
+.ad-section .ad-product {
+    /* flex 설정 */
+    flex: 1;          /* 남은 공간 차지 */
+    min-width: 0;     /* Flex 내부 버그 방지 (필수) */
+    
+    /* 내부 정렬 */
+    display: flex;
+    flex-flow: column;
+    gap: 40px;
+    align-items: flex-start;
+    
+    /* ★ 추가: 너비가 꼬이지 않도록 명시 */
+    width: 100%;      
+    overflow: hidden; /* 넘치는 것 자르기 */
+}
+
+/* 스와이퍼를 감싸는 박스 (있다면) */
+.product-box {
+    width: 100%; /* 부모 너비 꽉 채우기 */
+}
+
+/* 스와이퍼 본체 */
+.ad-section .ad-swiper {
+    width: 100%;        /* 무조건 100% */
+    padding-bottom: 30px; /* 스크롤바나 그림자 잘림 방지 여유 공간 */
+    overflow: visible;  /* 슬라이드가 살짝 삐져나가도 보이게 하려면 visible, 아니면 hidden */
+}
+.ad-section .swiper-scrollbar {height:2px;}
+
+
+/* ===========================================================NEW ITEMS=========================== */
+.newitem {max-width: 1440px; margin:0 auto; margin-top:120px;}
+.newitem .title-box {
+    display:flex; flex-flow:row; justify-content: space-between; 
+    align-items: flex-end; margin-bottom: 40px;
+}
+.newitem .price-box span {font-weight: 500;}
+.newitem .new-swiper{padding-bottom:40px;}
+.newitem .swiper-scrollbar{height:2px;}
+/* ==================================================띠배너========================== */
+.band-banner {margin:160px 0;}
+/* =========================엠디픽============================== */
+.mdpick {max-width:1440px; margin:0 auto; position: relative;}
+.mdpick .title-box {
+    display:flex; flex-flow:row; justify-content: space-between; 
+    align-items: flex-end; margin-bottom: 40px;
+}
+.mdpick-swiper {padding-bottom:40px;}
+.mdpick .swiper-scrollbar {
+    position: absolute;
+    bottom:0;
+    left:0;
+    height:2px;
+}
+/* ======================이번주 인기상품========================= */
+.weekly-best {max-width: 1440px; margin:0 auto; margin-top:120px;}
+.weekly-best .title-box {
+    display:flex; flex-flow:row; justify-content: space-between; 
+    align-items: flex-end; margin-bottom: 40px;
+}
+.weekly-best .price-box span {font-weight: 500;}
+.weekly-best .week-swiper{padding-bottom: 40px;}
+.weekly-best .swiper-scrollbar{height:2px;}
+/* ===============구매자 리뷰===================================== */
+/* 전체 섹션 설정 */
+.review-section {
+    max-width: 1440px;
+    margin: 100px auto; /* 위아래 여백 */
+    padding: 0 20px;    /* 좌우 여백 */
+}
+
+/* 헤더 (제목 + 전체보기) */
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end; /* 바닥 기준 정렬 */
+    margin-bottom: 30px;
+}
+.review-header h2 {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.review-header p {
+    color: #666;
+    font-size: 16px;
+}
+.review-header .view-all {
+    font-size: 14px;
+    color: #888;
+    text-decoration: underline;
+}
+
+/* Swiper 설정 */
+.review-swiper {
+    padding-bottom: 50px; /* 스크롤바 공간 확보 */
+}
+
+/* 개별 카드 스타일 */
+.review-card {
+    /* 너비는 JS에서 제어하거나 CSS로 고정 가능 */
+}
+
+/* 1. 리뷰 이미지 박스 */
+.review-img-box {
+    position: relative;
+    width: 100%;
+    height: 300px; /* 이미지 높이 고정 */
+    overflow: hidden;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+.review-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 비율 유지하며 꽉 채움 */
+}
+/* 우측 상단 좋아요 배지 */
+.like-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 4px 8px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size:10px;
+}
+
+/* 2. 리뷰 텍스트 (말줄임표) */
+.review-desc {
+    font-size: 12px;
+    line-height: 1.4;
+    color: #000;
+    margin-bottom: 10px;
+    
+    /* 2줄 이상 넘어가면 ... 처리 */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    height: 42px; /* 2줄 높이 고정 (레이아웃 틀어짐 방지) */
+}
+
+/* 3. 별점 및 아이디 */
+.review-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee; /* 구분선 */
+    padding-bottom: 20px;
+}
+.review-meta .user-id {font-size: 12px; color:#a3a3a3;}
+.review-meta .stars {
+    color: #ef2a23; /* 별점 색상 */
+    font-size: 12px;
+}
+
+/* 4. 연결된 상품 정보 */
+.linked-product {
+    display: flex;
+    gap: 12px;
+    text-decoration: none;
+    color: inherit;
+    align-items: flex-start;
+}
+.linked-product .lp-thumb {
+    width: 60px;
+    height: 60px;
+    flex-shrink: 0;
+    border-radius: 4px;
+    overflow: hidden;
+    background: #f5f5f5;
+}
+.linked-product .lp-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.linked-product .lp-info {
+    font-size: 13px;
+}
+.linked-product .brand {
+    color: #888;
+    font-size: 12px;
+    margin-bottom: 4px;
+}
+.linked-product .name {
+    color: #333;
+    font-size:12px;
+    margin-bottom: 6px;
+    /* 1줄 말줄임 */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 150px; 
+}
+.linked-product .price * {
+    font-weight:600;
+    font-size:12px;
+}
+.linked-product .price .rate {
+    color: #ef2a23;
+    margin-right: 4px;
+}
+
+.review-swiper .swiper-scrollbar {
+    height: 2px;
+}
+
+/* ==============footer============= */
+/* Footer 전체 배경 및 설정 */
+/* Footer 전체 배경 및 설정 */
+#footer {
+    background-color: #222; /* 짙은 회색 배경 */
+    color: #999; /* 기본 텍스트 색상 (연한 회색) */
+    font-size: 13px;
+    padding: 60px 0;
+    line-height: 1.5;
+}
+
+.footer-inner {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 40px; /* 좌우 여백 */
+}
+
+/* ================= Top Navigation ================= */
+.f-nav {
+    display: flex;
+    gap: 30px; /* 메뉴 사이 간격 */
+    margin-bottom: 40px;
+}
+
+.f-nav li {
+    cursor: pointer;
+    font-size:14px; color:#fff;
+}
+
+
+/* ================= Bottom Area (Info + Logo) ================= */
+.f-bottom {
+    display: flex;
+    justify-content: space-between; /* 양 끝 정렬 */
+    align-items: flex-end; /* 바닥 기준 정렬 */
+}
+
+/* --- 좌측 사업자 정보 --- */
+.biz-toggle {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 0;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* 화살표 아이콘 (CSS로 만들기) */
+.biz-toggle .arrow {
+    width: 8px;
+    height: 8px;
+    border-right: 1.5px solid #fff;
+    border-bottom: 1.5px solid #fff;
+    transform: rotate(45deg); /* 아래 화살표 모양 */
+    margin-bottom: 3px;
+}
+
+/* address 태그 기본 스타일 초기화 */
+address {
+    font-style: normal;
+    margin-bottom: 30px;
+}
+
+/* Grid로 정렬 (왼쪽 제목 고정, 오른쪽 내용) */
+.biz-list {
+    display: grid;
+    grid-template-columns: 140px 1fr; /* 제목 너비 140px, 나머지는 자동 */
+    gap: 8px 0; /* 위아래 간격 8px */
+}
+.biz-list * {font-size:12px;}
+.biz-list dt {
+    color: #999;
+}
+
+.biz-list dd {
+    color: #ccc; /* 내용이 조금 더 밝게 */
+}
+
+/* 밑줄 링크 스타일 */
+.underline {
+    text-decoration: underline;
+    color: inherit; /* 부모 색상 상속 */
+}
+
+.copyright {
+    color: #666; /* 카피라이트는 조금 더 어둡게 */
+    font-size: 12px;
+}
+
+.f-logo {
+    /* 혹시 모를 공간 차지 방지 */
+    margin-left: auto; 
+}
+
+.f-logo img {
+    height: 24px;       /* 로고 크기 */
+    
+    /* ★ 핵심: 검정색 로고를 강제로 하얀색으로 변경 */
+    filter: brightness(0) invert(1); 
+    
+    opacity: 1;         /* 투명도 제거하고 선명하게 */
+    display: block;     /* 이미지 아래 여백 제거 */
+}
