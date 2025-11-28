@@ -235,8 +235,9 @@ button {background:none;}
 .banner-swiper .swiper-slide .banner8 {background:url(../images/main_banner/main_banner8.png);}
 .banner-swiper .swiper-slide .banner9 {background:url(../images/main_banner/main_banner9.png);}
 .banner-swiper .swiper-slide .banner10 {background:url(../images/main_banner/main_banner10.png);}
-.banner-swiper .swiper-slide .banner-box {width:49%; height:450px; background-size:cover; background-repeat: no-repeat; position: relative;}
+.banner-swiper .swiper-slide .banner-box {width:50%; height:450px; background-size:cover; background-repeat: no-repeat; position: relative;}
 .banner-swiper .swiper-slide .banner-box .banner-text {position:absolute; left:40px; bottom:40px;}
+.banner-swiper .swiper-slide-active .banner-box {margin:0 20px;}
 .banner-swiper .swiper-slide .banner-box h2 {color:#fff; font-size:32px; font-weight: 700; text-shadow:0px 4px 4px rgba(0,0,0,0.1); margin-bottom:10px;}
 .banner-swiper .swiper-slide .banner-box p {color:#fff; font-weight:600; text-shadow:0px 4px 4px rgba(0,0,0,0.1);}
 /* ----------------------------메인배너 애니메이션+after 처리--------------------------- */
