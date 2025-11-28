@@ -105,7 +105,6 @@ document.addEventListener('DOMContentLoaded', () => {
         item.classList.add('is-active');
         });
     });
-});
 
 /* ===============================swiper=========================================== */
 // Swiper 초기화 (라이브러리가 로드되었는지 확인)
@@ -369,4 +368,5 @@ openBtns.forEach(function(btn) {
         // 보통 다시 누르면 닫히는 게 자연스러우므로 toggle 유지
         currentProduct.classList.toggle('active');
     });
+});
 });
